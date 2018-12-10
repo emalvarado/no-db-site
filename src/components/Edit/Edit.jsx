@@ -37,7 +37,7 @@ class Edit extends Component {
         return (
             <div>
                 <div className='listItems'>
-                    <img src={this.props.photo} width='350px' alt="" />
+                    <img src={this.props.photo} width='400px' alt="" />
                     <div className='name'>
                         {this.props.name}
                     </div>

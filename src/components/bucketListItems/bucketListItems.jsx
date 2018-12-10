@@ -43,7 +43,7 @@ class ItemList extends Component {
                         hideEdit={this.hideEdit} />
                     :
                     <div className='listItems'>
-                        <img src={this.props.photo} width='350px' alt="" />
+                        <img src={this.props.photo} width='400px' alt="" />
                         <div className='name'>
                             {this.props.name}
                         </div>
