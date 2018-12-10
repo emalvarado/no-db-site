@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import ItemList from './components/bucketListItems/bucketListItems'
 import Nav from './components/navbar/navbar'
-// import DoneList from './components/DoneList/DoneList'
+
 
 
 
@@ -64,7 +64,12 @@ class App extends Component {
       })
   }
 
-
+  handleKeyDown(e) {
+    // console.log(e.keyCode)
+    if (e.keyCode === 13) {
+      this.handleClick();
+    }
+  }
 
 
 
@@ -73,27 +78,34 @@ class App extends Component {
   render() {
     const { bucketList } = this.state;
     return (
-      <div>
-      <Nav />
-        <input onChange={e => { this.handleChange('inputName', e.target.value) }}
-          type="text"
-          placeholder='Your idea here'
-          value={this.state.inputName} />
-        <input onChange={e => { this.handleChange('inputPhoto', e.target.value) }}
-          type="text"
-          value={this.state.inputPhoto}
-          placeholder='Photo URL' />
-        <button onClick={() => this.handleClick()}>Add to your Bucket List</button>
-        {bucketList.map(item => (
-          <ItemList key={item.id}
-            name={item.name}
-            photo={item.photo}
-            id={item.id}
-            updateItemFn={this.updateItem}
-            deleteItemFn={this.deleteItem} />
-        ))}
-        <header>Look at all the cool things you've done!!</header>
-         
+      <div id='main'>
+        <Nav />
+        <div id='inputDiv'>
+          <input onChange={e => { this.handleChange('inputName', e.target.value) }}
+            type="text"
+            placeholder='Your idea here'
+            value={this.state.inputName}
+            onKeyDown={(e) => this.handleKeyDown(e)}/>
+          <input onChange={e => { this.handleChange('inputPhoto', e.target.value) }}
+            type="text"
+            value={this.state.inputPhoto}
+            placeholder='Photo URL'
+            onKeyDown={(e) => this.handleKeyDown(e)}
+          />
+          <button
+            onClick={() => this.handleClick()}>Add to your Bucket List</button>
+        </div>
+        <div id='items'>
+          {bucketList.map((item, index) => (
+            <ItemList key={index}
+              name={item.name}
+              photo={item.photo}
+              id={item.id}
+              updateItemFn={this.updateItem}
+              deleteItemFn={this.deleteItem} />
+          ))}
+          {/* <header>Look at all the cool things you've done!!</header> */}
+        </div>
       </div>
     );
   }

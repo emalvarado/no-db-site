@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Edit from '../Edit/Edit'
+import './bucketListItems.css'
 
 class ItemList extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ class ItemList extends Component {
 
         this.state = {
             editing: false,
-            done: []
+            // done: []
         }
     }
 
@@ -17,21 +18,23 @@ class ItemList extends Component {
         })
     }
 
-    hideEdit=() => {
+    hideEdit = () => {
         this.setState({
             editing: false
         })
     }
 
-    handleDone = () => {
-        this.props.deleteItemFn(this.props.id);
-        this.state.done.push()
-    }
+    // handleDone = () => {
+    //     this.props.deleteItemFn(this.props.id);
+    //     this.state.done.push()
+    // }
+
+
 
     render() {
 
         return (
-            <div>
+            <div id='listItemsMain'>
                 {this.state.editing ?
                     <Edit name={this.props.name}
                         photo={this.props.photo}
@@ -39,17 +42,19 @@ class ItemList extends Component {
                         id={this.props.id}
                         hideEdit={this.hideEdit} />
                     :
-                    <div>
-                        <div>
+                    <div className='listItems'>
+                        <img src={this.props.photo} width='350px' alt="" />
+                        <div className='name'>
                             {this.props.name}
                         </div>
-                        <img src={this.props.photo} height='200px' alt="" />
                     </div>
 
                 }
-                <button onClick={() => this.editButton()}>Edit</button>
-                <button onClick={() => this.props.deleteItemFn(this.props.id)}>Delete</button>
-                <button>Did it!!</button>
+                <div id='buttons'>
+                    <button onClick={() => this.editButton()}>Edit</button>
+                    <button onClick={() => this.props.deleteItemFn(this.props.id)}>Delete</button>
+                    {/* <button>Did it!!</button> */}
+                </div>
             </div>
         )
     }

@@ -1,0 +1,56 @@
+#main {
+  position: relative;
+  
+}
+
+
+
+#inputDiv {
+  position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ top: -7vh;
+ /* background-color: transparent; */
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.514);
+  font-weight: bold;
+  box-shadow: 5px 5px 15px black;
+
+}
+
+#inputDiv input {
+  margin: 10px;
+  height: 25px;
+  padding: 0 20px;
+  font-size: 16px;
+}
+
+::placeholder {
+  color: rgba(71, 70, 70, 0.719);
+ font-weight: bold;
+  font-size: 16px;
+}
+
+#inputDiv button {
+  border-radius: 100%;
+  height: 75px;
+  width: 75px;
+  font-weight: bold;
+}
+
+#inputDiv button:hover {
+  background-color: rgba(255, 255, 255, 0.178);
+  border: none;
+  color: white;
+}
+
+#items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 15vw;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,51 @@
+#listItemsMain {
+  position: relative;
+  margin: 20px;
+}
+
+
+
+.name {
+  display: flex;
+  position: absolute;
+  top: 0px;
+  background-color: rgba(255, 255, 255, 0.39);
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  padding: 0 2%;
+  border-radius: 10px;
+}
+
+
+
+
+img {
+  position: relative;
+  box-shadow: 5px 5px 20px black;
+}
+
+
+#buttons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+ button {
+  margin: 3px;
+  background-color: rgba(255, 255, 255, 0.486);
+  box-shadow: 5px 5px 20px black;
+  font-weight: bold;
+  font-size: 12px;
+  border: none;
+  padding: 5px;
+}
+
+ button:hover {
+  background-color: rgba(0, 0, 0, 0.308);
+  color: white;
+}

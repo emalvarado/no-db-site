@@ -1,0 +1,25 @@
+#updateInput {
+  position: absolute;
+  z-index: 10000;
+  bottom: 37px;
+  right: 3px;
+  
+  
+}
+
+#updateInput input {
+  margin: 2px;
+  width: 100px;
+  color: black;
+  padding: 3px;
+}
+
+#updateInput ::placeholder {
+  font-size: 10px;
+
+}
+
+.editbuttons {
+  margin: 0 1px 0 0;
+  /* background-color: black; */
+}

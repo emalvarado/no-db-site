@@ -10,7 +10,7 @@ let bucketList = [{
 }
 ];
 
-let id= 1;
+let id= 3;
 
 module.exports = {
     getList: (req, res) => {
@@ -21,7 +21,7 @@ module.exports = {
         bucketList.push({
             name: req.body.name,
             id: id,
-            photo: req.body.photo
+            photo: req.body.photo || 'https://ih0.redbubble.net/image.510503774.0568/ap,550x550,16x12,1,transparent,t.u3.png'
         })
         id++;
         res.status(200).send(bucketList)
@@ -38,13 +38,14 @@ module.exports = {
     },
     updateItem: (req,res) => {
         // console.log(req.params)
-        console.log(req.body)
+        // console.log(req.body)
         let index = bucketList.findIndex((item) => item.id === +(req.params.id))
+        console.log(index)
         if(index !== -1){
             bucketList[index] = {
-                id: req.params.id,
-                name: req.body.name,
-                photo: req.body.photo
+                id: +req.params.id,
+                name: req.body.name || bucketList[index].name,
+                photo: req.body.photo || bucketList[index].photo
             }
         }
         res.status(200).send(bucketList)
