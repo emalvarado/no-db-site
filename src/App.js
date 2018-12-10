@@ -3,6 +3,8 @@ import './App.css';
 import axios from 'axios';
 import ItemList from './components/bucketListItems/bucketListItems'
 import Nav from './components/navbar/navbar'
+import DoneListComp from './components/doneList'
+
 
 
 
@@ -15,6 +17,7 @@ class App extends Component {
       inputPhoto: '',
       inputName: '',
       bucketList: [],
+
     }
   }
 
@@ -71,12 +74,24 @@ class App extends Component {
     }
   }
 
-
-
-
+  handleDone = (id) => {
+    let copy = this.state.bucketList.map((item)=>{
+      let newItem = {...item}
+      if(newItem.id===id){
+        newItem.done=true
+      }
+      return newItem
+    })
+    this.setState({
+      bucketList: copy
+    })
+  }
+ 
 
   render() {
     const { bucketList } = this.state;
+    let doneList = bucketList.filter((item) => item.done)
+    let notDone = bucketList.filter((item) => !item.done)
     return (
       <div id='main'>
         <Nav />
@@ -85,7 +100,7 @@ class App extends Component {
             type="text"
             placeholder='Your idea here'
             value={this.state.inputName}
-            onKeyDown={(e) => this.handleKeyDown(e)}/>
+            onKeyDown={(e) => this.handleKeyDown(e)} />
           <input onChange={e => { this.handleChange('inputPhoto', e.target.value) }}
             type="text"
             value={this.state.inputPhoto}
@@ -95,16 +110,38 @@ class App extends Component {
           <button
             onClick={() => this.handleClick()}>Add to your Bucket List</button>
         </div>
+        <div>
+          {notDone.map((item, index) => {
+
+            return (
+              <ItemList key={index}
+                name={item.name}
+                photo={item.photo}
+                id={item.id}
+                updateItemFn={this.updateItem}
+                deleteItemFn={this.deleteItem}
+                done={item.done}
+                handleDoneFn={this.handleDone} />
+            )
+          })}
+        </div>
+        <header id='doneHeader'>
+          Look at all the cool things you've done!
+        </header>
         <div id='items'>
-          {bucketList.map((item, index) => (
-            <ItemList key={index}
-              name={item.name}
-              photo={item.photo}
-              id={item.id}
-              updateItemFn={this.updateItem}
-              deleteItemFn={this.deleteItem} />
-          ))}
-          {/* <header>Look at all the cool things you've done!!</header> */}
+          {doneList.map((item, index) => {
+            // console.log(item)
+            return (
+              <DoneListComp key={index}
+                name={item.name}
+                photo={item.photo}
+                id={item.id}
+                updateItemFn={this.updateItem}
+                deleteItemFn={this.deleteItem}
+                done={item.done}
+                handleDoneFn={this.handleDone} />
+            )
+          })}
         </div>
       </div>
     );
@@ -112,3 +149,4 @@ class App extends Component {
 }
 
 export default App;
+

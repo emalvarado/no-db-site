@@ -1,16 +1,24 @@
 let bucketList = [{
     photo: 'https://www.worldatlas.com/r/w728-h425-c728x425/upload/c3/55/d1/shutterstock-258841592.jpg',
     name: 'See Everest',
-    id: 1
+    id: 1,
+    done: false
 },
 {
     photo: 'https://s3.amazonaws.com/images.gearjunkie.com/uploads/2018/05/everest-the-summit-climb.jpg',
     name: 'climb everest',
-    id: 2
+    id: 2,
+    done: false
+},
+{
+    photo: 'https://cdn.newsapi.com.au/image/v1/571c6423b246e92eaa087f9742a719d9?width=1024',
+    name: 'see the wall',
+    id: 3,
+    done: false
 }
 ];
 
-let id= 3;
+let id= 4;
 
 module.exports = {
     getList: (req, res) => {

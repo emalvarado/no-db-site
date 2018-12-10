@@ -54,3 +54,7 @@ input {
   padding: 0 15vw;
   flex-wrap: wrap;
 }
+
+#doneHeader {
+  font-size: 60px;
+}
