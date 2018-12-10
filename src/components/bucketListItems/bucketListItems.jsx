@@ -24,7 +24,11 @@ class ItemList extends Component {
         })
     }
 
-  
+    // handleDone = () => {
+    //     this.props.deleteItemFn(this.props.id);
+    //     this.state.done.push()
+    // }
+
 
 
     render() {
@@ -49,7 +53,7 @@ class ItemList extends Component {
                 <div id='buttons'>
                     <button onClick={() => this.editButton()}>Edit</button>
                     <button onClick={() => this.props.deleteItemFn(this.props.id)}>Delete</button>
-                    <button onClick={() => this.props.handleDoneFn(this.props.id)}> Did it!</button>
+                    {/* <button>Did it!!</button> */}
                 </div>
             </div>
         )
